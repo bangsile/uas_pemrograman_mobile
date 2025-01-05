@@ -44,98 +44,99 @@ class _VerifyScreenState extends State<VerifyScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50),
-              const Center(
-                  child: Image(image: AssetImage("assets/verify.png"))),
-              const SizedBox(height: 40),
-              const Center(
-                child: Column(
-                  children: [
-                    Text(
-                      "Enter OTP",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      "An 4 digit OTP has been sent to",
-                      style: TextStyle(),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "458-465-6466",
-                      style: TextStyle(
-                        // fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(4, (index) {
-                  return SizedBox(
-                    width: 55,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      maxLength: 1,
-                      decoration: InputDecoration(
-                        counterText: "",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Center(
+                    child: Image(image: AssetImage("assets/verify.png"))),
+                const SizedBox(height: 40),
+                const Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Enter OTP",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50),
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                      SizedBox(height: 20),
+                      Text(
+                        "An 4 digit OTP has been sent to",
+                        style: TextStyle(),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "458-465-6466",
+                        style: TextStyle(
+                          // fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  child: const Text(
-                    "Verify",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  )),
-              const SizedBox(height: 20),
-              const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  "Resend OTP",
-                  style: TextStyle(
-                    // fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
                 ),
-                SizedBox(width: 5,),
-                Text(
-                  "(00:12)",
-                  style: TextStyle(
+                const SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(4, (index) {
+                    return SizedBox(
+                      width: 55,
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        maxLength: 1,
+                        decoration: InputDecoration(
+                          counterText: "",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(double.infinity, 50),
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text(
+                      "Verify",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )),
+                const SizedBox(height: 20),
+                const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    "Resend OTP",
+                    style: TextStyle(
                       // fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey),
-                  textAlign: TextAlign.center,
-                ),
-              ])
-            ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 5,),
+                  Text(
+                    "(00:12)",
+                    style: TextStyle(
+                        // fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                ])
+              ],
+            ),
           ),
         ),
       ),
