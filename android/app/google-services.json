@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "829297797674",
+    "project_id": "auth-mobile-527fc",
+    "storage_bucket": "auth-mobile-527fc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829297797674:android:3f0a632d7e2bef00413153",
+        "android_client_info": {
+          "package_name": "com.example.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829297797674-eb6mjtnildpq9b1abua6l93rj9j5j0e5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRkhInN9srLNc13YTUroRh_uDSXt4vdEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829297797674-eb6mjtnildpq9b1abua6l93rj9j5j0e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

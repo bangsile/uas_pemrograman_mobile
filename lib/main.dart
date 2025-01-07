@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:authentication/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MainApp());
 }
 
@@ -14,10 +17,6 @@ class MainApp extends StatelessWidget {
       title: 'Sistem Pengajuan Judul Skripsi',
       theme: ThemeData(primarySwatch: Colors.red),
       debugShowCheckedModeBanner: false, // Menghilangkan banner debug
-      // initialRoute: '/login',
-      // routes: {
-      //   '/login': (context) => LoginScreen(),
-      // },
       home: LoginScreen(),
     );
   }

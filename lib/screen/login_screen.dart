@@ -1,3 +1,5 @@
+import 'package:authentication/auth/auth_service.dart';
+import 'package:authentication/screen/dashboard_screen.dart';
 import 'package:authentication/screen/forgot_screen.dart';
 import 'package:authentication/screen/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = AuthService();
   bool _isPasswordVisible = false;
   String _selectedCountryCode = '+91';
   TextEditingController _phoneController = TextEditingController();
@@ -158,7 +161,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: const Text("Sign Up",
                           style: TextStyle(
-                              fontWeight: FontWeight.w800, color: Colors.black)),
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black)),
                     ),
                   ],
                 ),
@@ -170,7 +174,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {
+                          final userCredential = await _auth.loginWithGoogle();
+                          if (userCredential != null &&
+                              userCredential.user != null) {
+                            // Navigasi ke Dashboard
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    DashboardScreen(user: userCredential.user),
+                              ),
+                            );
+                          } else {
+                            // Tampilkan pesan error
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content:
+                                      Text("Login gagal. Silakan coba lagi.")),
+                            );
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
                           backgroundColor: Colors.white,

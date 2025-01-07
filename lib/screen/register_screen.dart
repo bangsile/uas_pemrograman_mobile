@@ -1,3 +1,5 @@
+import 'package:authentication/auth/auth_service.dart';
+import 'package:authentication/screen/dashboard_screen.dart';
 import 'package:authentication/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +10,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _auth = AuthService();
   bool _isPasswordVisible = false;
   String _selectedCountryCode = '+91';
   TextEditingController _phoneController = TextEditingController();
@@ -85,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-            
+
                 // Email
                 const Text("Enter your email"),
                 const SizedBox(height: 10),
@@ -97,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-            
+
                 // Password
                 const Text("Enter your password"),
                 const SizedBox(height: 10),
@@ -123,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-            
+
                 // Conf Password
                 const Text("Re-Enter your password"),
                 const SizedBox(height: 10),
@@ -175,12 +178,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
                         );
                       },
                       child: const Text("Sign in",
                           style: TextStyle(
-                              fontWeight: FontWeight.w800, color: Colors.black)),
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black)),
                     ),
                   ],
                 ),
@@ -193,7 +198,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     children: [
                       ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            final res = await _auth.loginWithGoogle();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DashboardScreen(
+                                        user: res?.user,
+                                      )),
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Login failed: $e')),
+                            );
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
                           backgroundColor: Colors.white,
